@@ -15,10 +15,10 @@
 
 5.界面美化。
 ## 二.实现效果：
-主界面  插入界面
+主界面                                                                 插入界面
 
 
-<image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E4%B8%BB%E7%95%8C%E9%9D%A2.png"> <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E6%8F%92%E5%85%A5%E7%95%8C%E9%9D%A2.png">
+<image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E4%B8%BB%E7%95%8C%E9%9D%A2.png">      <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E6%8F%92%E5%85%A5%E7%95%8C%E9%9D%A2.png">
 
 
 ## 三.主要目录说明： 注：因为太晚开始编写这个项目，没有想好就开始写了，所以写的有点混乱。敬请谅解。
