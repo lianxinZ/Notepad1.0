@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="type">
+            <item>按id查询</item>
+            <item>按标题查询</item>
+            <item>内容查询</item>
+        </string-array>
+
+    <string-array name="background">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="color">
+        <item>粉粉粉</item>
+        <item>蓝蓝蓝</item>
+        <item>初始</item>
+    </string-array>
+
+    <string-array name="size">
+        <item>大</item>
+        <item>中</item>
+        <item>小</item>
+    </string-array>
+
+    </resources>

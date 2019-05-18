@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingTop="20dp"
+    tools:context=".SearchActivity">
+
+    <EditText
+        android:id="@+id/Search_E1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Search_E1"
+        android:paddingLeft="60dp"
+        >
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/type"
+        android:paddingTop="18dp"
+
+         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="搜索"
+        android:onClick="SearchByString"
+        android:layout_toRightOf="@id/spinner1"
+        />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/r1"
+        />
+</RelativeLayout>

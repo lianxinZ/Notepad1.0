@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="字体设置"
+        android:key="pref_font"
+        >
+        <ListPreference
+            android:key="pref_fontSize"
+            android:title="字体大小"
+            android:summary="设置字体大小"
+            android:entries="@array/size"
+            android:entryValues="@array/size"
+            android:dialogTitle="Chooese one"
+            />
+
+        <ListPreference
+            android:key="pref_fontColor"
+            android:title="字体颜色"
+            android:summary="设置字体颜色"
+            android:entries="@array/color"
+            android:entryValues="@array/color"
+            android:dialogTitle="Chooese one"
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="背景设置"
+        android:key="pref_background"
+        >
+        <ListPreference
+            android:key="pref_bgcolor"
+            android:title="背景"
+            android:summary="设置背景"
+            android:entries="@array/color"
+            android:entryValues="@array/color"
+            android:dialogTitle="Chooese one"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

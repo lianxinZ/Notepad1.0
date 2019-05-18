@@ -1,0 +1,39 @@
+<resources>
+
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+
+    </style>
+
+
+    <!--红色主题-->
+    <style name="whiteTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorAccent">@color/gray</item>
+
+        <item name="android:windowBackground">@drawable/white</item>
+    </style>
+
+
+    <!--蓝色主题-->
+    <style name="blueTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="android:windowBackground">@drawable/blue</item>
+    </style>
+
+    <!--粉色主题-->
+    <style name="redTheme" parent="AppTheme">
+
+        <item name="colorPrimary">@color/pink</item>
+        <item name="colorAccent">@color/pink</item>
+        <item name="toolbarNavigationButtonStyle">@color/pink</item>
+        <item name="android:windowBackground">@drawable/pink</item>
+    </style>
+    <!--黄色主题-->
+    <style name="yellowTheme" parent="AppTheme">
+        <item name="android:textColor">@color/blace</item>
+        <item name="android:windowBackground">@color/yellow</item>
+    </style>
+
+
+</resources>

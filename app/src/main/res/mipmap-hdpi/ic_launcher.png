@@ -1,0 +1,58 @@
+<application>
+  <component name="ActionsCollector">
+    <counts>
+      <entry action="$Copy" count="26" />
+      <entry action="$Cut" count="1" />
+      <entry action="$Delete" count="66" />
+      <entry action="$Paste" count="37" />
+      <entry action="$Redo" count="1" />
+      <entry action="$SelectAll" count="48" />
+      <entry action="$Undo" count="1190" />
+      <entry action="Android Profiler" count="3" />
+      <entry action="Android.BuildApk" count="3" />
+      <entry action="Android.CreateResourceDirectory" count="1" />
+      <entry action="Android.CreateSampleDataDirectory" count="1" />
+      <entry action="Android.GenerateSignedApk" count="1" />
+      <entry action="Android.LinkExternalCppProject" count="1" />
+      <entry action="Android.RunAndroidAvdManager" count="7" />
+      <entry action="Android.RunAndroidSdkManager" count="5" />
+      <entry action="Android.SyncProject" count="4" />
+      <entry action="AndroidConnectDebuggerAction" count="5" />
+      <entry action="ChooseRunConfiguration" count="1" />
+      <entry action="CloseAllEditors" count="3" />
+      <entry action="CloseAllEditorsButActive" count="2" />
+      <entry action="CodeCompletion" count="87" />
+      <entry action="CommentByLineComment" count="74" />
+      <entry action="ConsoleView.ClearAll" count="2" />
+      <entry action="CopyReference" count="1" />
+      <entry action="Debug" count="1" />
+      <entry action="DialogOkAction Enter" count="2" />
+      <entry action="EditorBackSpace" count="7671" />
+      <entry action="EditorChooseLookupItem" count="1220" />
+      <entry action="EditorChooseLookupItemReplace" count="7" />
+      <entry action="EditorCopy" count="305" />
+      <entry action="EditorCut" count="91" />
+      <entry action="EditorDelete" count="6" />
+      <entry action="EditorDeleteToWordStart" count="1" />
+      <entry action="EditorDown" count="969" />
+      <entry action="EditorEnter" count="1023" />
+      <entry action="EditorIndentSelection" count="13" />
+      <entry action="EditorLeft" count="557" />
+      <entry action="EditorLeftWithSelection" count="1" />
+      <entry action="EditorLineEnd" count="6" />
+      <entry action="EditorLineStart" count="1" />
+      <entry action="EditorPaste" count="567" />
+      <entry action="EditorPasteSimple" count="2" />
+      <entry action="EditorRight" count="377" />
+      <entry action="EditorTab" count="323" />
+      <entry action="EditorToggleInsertState" count="6" />
+      <entry action="EditorUp" count="245" />
+      <entry action="ExpandLiveTemplateByTab" count="2" />
+      <entry action="ExternalSystem.ExpandAll" count="1" />
+      <entry action="FindPrevious" count="1" />
+      <entry action="Github.Share" count="22" />
+      <entry action="GoogleLogin.LoginService" count="1" />
+      <entry action="GotoDeclaration" count="5" />
+      <entry action="HideAllWindows" count="16" />
+      <entry action="HippieCompletion" count="12" />
+      <entry action="Inval
