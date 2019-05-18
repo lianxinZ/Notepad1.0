@@ -157,6 +157,7 @@ Mainactivity
 ~~~
 ### 备忘录点击重新编辑功能
 1.设置listview监听事件，获取当前item数据，带数据跳转到编辑界面，
+Mainactivity
 ~~~
 //listviewItem点击事件，进入编辑页面
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -179,6 +180,7 @@ Mainactivity
 
 ~~~
 2.获取点击的item的数据填充到编辑页面的Edtext里，在重新编辑之后更新数据库。
+updataactivity
 ~~~
 
     //通过intent从listview获取数据
@@ -236,4 +238,98 @@ Mainactivity
         });
     }
 ~~~
-###
+### 长按选项多选删除功能
+Mainactivity 
+
+设置多选监听事件，获取所有被选中的id, 选中的项目颜色变成灰色，取消选中则恢复
+~~~
+  //长按点击事件，长按多选删除
+        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            private ListView mListView;
+            private int selectnum=0;//选中项目数量
+
+            private List<Integer> mSelectedItems = new ArrayList<>();//选中项目position
+
+            private List<String> ids=new ArrayList<>();//选中项目id
+
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+
+                if(checked) {
+                    selectnum++;
+                    mSelectedItems.add((Integer) position);
+                    //根据游标获取选中item 的id;
+                    Cursor c1=(Cursor)listView.getItemAtPosition(position);
+
+                    String _id=String.valueOf(c1.getInt(c1.getColumnIndex(COLUMN_NAME_ID)));
+                    ids.add(_id);
+                    listView.getChildAt(position).setBackgroundColor(Color.GRAY);//选中时背景色设为灰色
+                }
+                else {
+                    selectnum--;
+                    mSelectedItems.remove((Integer) position);
+
+                    //根据游标获取选中item 的id;
+                    Cursor c2=(Cursor)listView.getItemAtPosition(position);
+                    String _id=String.valueOf(c2.getInt(c2.getColumnIndex(COLUMN_NAME_ID)));
+                    ids.remove(_id);
+
+                    listView.getChildAt(position).setBackgroundColor(Color.TRANSPARENT);//取消选中
+
+                }
+                mode.setTitle(selectnum + " selected");
+                apt.notifyDataSetChanged();
+            }
+            
+ ~~~
+        
+长按显示菜单栏
+
+~~~
+            //长按菜单栏
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+
+
+                MenuInflater inflater=mode.getMenuInflater();
+                inflater.inflate(R.menu.action_menu,menu);
+                return true;
+            }
+            
+~~~
+          
+菜单栏点击事件       
+
+~~~
+            //长按菜单栏点击事件
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item_cancel:break;
+                    case R.id.item_delete:
+                        deleteByID(ids,cursor);;
+
+                        break;
+                    default:
+                        break;
+                }
+                mode.finish();
+                return true;
+            }
+  ~~~
+  
+  删除函数
+  
+  ~~~
+      //删除笔记
+    public void deleteByID(List<String> seleted,Cursor cursor){
+        DBHelper dbh=new DBHelper(getApplicationContext());
+        SQLiteDatabase db=dbh.getWritableDatabase();
+        for(String i: seleted){
+            db.delete(TABLE_NAME,"_id=?",new String[]{i});
+        }
+        cursor.requery();
+        apt.notifyDataSetChanged();
+
+    }
+  ~~~
+  
+
