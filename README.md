@@ -385,4 +385,87 @@ SearchActivity
     }
   
   ~~~
+### 使用preferencefragment实现偏好设置
+1.调用addPreferencesFromResource方法绑定设置布局文件
+~~~
+public class Setting  extends PreferenceFragment {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.preferences);
+    }
+
+~~~
+2.preferenceActivity
+~~~
+//加载设置界面
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new Setting())
+                .commit();
+~~~
+
+3.在主界面读取配置信息，根据读取数据设置initData类的Bgstyle
+~~~
+
+    //读取配置文件信息
+    public void initeSetting(){
+        SharedPreferences settings = this.getSharedPreferences("com.example.mynote_preferences", MODE_PRIVATE);
+        String bgcolor=settings.getString("pref_bgcolor","初始");
+
+        switch (bgcolor){
+            case "初始":
+                initData.setBgstyle(R.style.whiteTheme);
+                break;
+            case "蓝蓝蓝":
+                initData.setBgstyle(R.style.blueTheme);
+                break;
+            case "粉粉粉":
+                initData.setBgstyle(R.style.redTheme);
+                break;
+        }
+
+    }
+~~~
+4.在每个activity 开始时，加载theme
+~~~
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //调用initesetting（）获取xml文件数据初始化布局样式
+        initeSetting();
+        setTheme(initData.getBgstyle());
+
+        setContentView(R.layout.activity_main);
+    }
+~~~
+
+styles.xml
+
+~~~
+    <!--红色主题-->
+    <style name="whiteTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorAccent">@color/gray</item>
+
+        <item name="android:windowBackground">@drawable/white</item>
+    </style>
+
+
+    <!--蓝色主题-->
+    <style name="blueTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="android:windowBackground">@drawable/blue</item>
+    </style>
+
+    <!--粉色主题-->
+    <style name="redTheme" parent="AppTheme">
+
+        <item name="colorPrimary">@color/pink</item>
+        <item name="colorAccent">@color/pink</item>
+        <item name="toolbarNavigationButtonStyle">@color/pink</item>
+        <item name="android:windowBackground">@drawable/pink</item>
+    </style>
+~~~
+
 
