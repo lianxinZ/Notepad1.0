@@ -24,7 +24,16 @@
 主界面：使用listview 显示 备忘录内容 和其他界面的入口
 ### InsertActivity
 插入界面：实现添加备忘录
-###
+### SearchActivity
+搜索界面：实现搜索功能
+### updateActivity
+编辑界面：实现备忘录的重新编辑
+### preferenceActivity
+设置界面：使用preferenceFragment实现偏好设置
+### Setting
+设置类，加载preferences.xml配置文件
+### initData
+数据类，用来存放偏好设置的数据
 
 
 
