@@ -90,7 +90,7 @@ public class DBHelper extends SQLiteOpenHelper {
 }
 ~~~
 
-### 实现备忘录的插入功能
+### 实现备忘录的插入功能，实现时间戳
 InsertActivity
 ~~~
     public void Insert(View view){
@@ -297,7 +297,7 @@ Mainactivity
             
 ~~~
           
-菜单栏点击事件       
+菜单栏点击事件     点击删除调用删除函数，点击取消则退出
 
 ~~~
             //长按菜单栏点击事件
@@ -316,7 +316,7 @@ Mainactivity
             }
   ~~~
   
-  删除函数
+  删除函数：根据获取的选中id集合来执行删除语句
   
   ~~~
       //删除笔记
@@ -332,4 +332,57 @@ Mainactivity
     }
   ~~~
   
+  ### 搜索功能
+  
+SearchActivity
+根据输入的字段和下拉框的选择来调用搜索函数执行搜索，把搜索的结果放入listview显示
+
+  ~~~
+   //搜索按钮点击事件
+    public void  SearchByString(View view){
+        EditText title =(EditText) findViewById (R.id.Search_E1);
+        Spinner spinner=findViewById(R.id.spinner1);
+        String t=title.getText().toString();
+        String s=(String)spinner.getSelectedItem();
+        String type="_id";//默认按id搜索
+
+
+        switch (s){
+            case "按id查询":
+                type="_id";
+                break;
+            case "按标题查询":
+                type="title";
+                break;
+            case "内容查询":
+                type="detail";
+                break;
+            default:
+                break;
+        }
+
+        cursor=Search(type,t);//获取搜索结果的游标
+
+        //创建适配器放入listview
+        String[] from={COLUMN_NAME_ID,COLUMN_NAME_TITLE,COLUMN_NAME_DETAIL,COLUMN_NAME_DATE};
+        int[] to={R.id.List_id,R.id.List_title,R.id.List_detail,R.id.List_date};
+        apt=new SimpleCursorAdapter(this,R.layout.listview_note,cursor,from,to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        listView=findViewById(R.id.lv2);
+        listView.setAdapter(apt);
+    }
+  ~~~
+  
+  搜索函数
+  
+  ~~~
+      //输入搜索的列和搜索内容,执行sql语句模糊搜索
+    public Cursor Search(String Type, String s){
+        DBHelper dbh=new DBHelper(getApplicationContext());
+        SQLiteDatabase db=dbh.getWritableDatabase();
+
+        Cursor cursor=db.query(TABLE_NAME,null,Type+"  LIKE ? ",new String[] { "%" + s + "%" },null,null,null);
+        return cursor;
+    }
+  
+  ~~~
 
