@@ -72,7 +72,6 @@ public final class FeedReaderContract {
 
 DBHelper.java
 ~~~
-
 public class DBHelper extends SQLiteOpenHelper {
     public static final int VERSION=1;
     public static final String DATABASE_NAME="MyNoteDatabase";
@@ -91,5 +90,150 @@ public class DBHelper extends SQLiteOpenHelper {
 }
 ~~~
 
+### 实现备忘录的插入功能
+InsertActivity
+~~~
+    public void Insert(View view){
+        //从EditText获取数据
+        EditText TITLE =(EditText) findViewById (R.id.insert_title);
+        EditText DETAIL =(EditText) findViewById (R.id.insert_detail);
+
+        String title=TITLE.getText().toString();
+        String detail=DETAIL.getText().toString();
+
+        //获取系统时间
+        SimpleDateFormat formatter   =   new   SimpleDateFormat   ("yyyy.MM.dd.HH:mm:ss");//获取时间
+        Date curDate =  new Date(System.currentTimeMillis());
+        String date=formatter.format(curDate);
 
 
+        //打包数据
+        ContentValues values=new ContentValues();
+        values.put(COLUMN_NAME_TITLE,title);
+        values.put(COLUMN_NAME_DETAIL,detail);
+        values.put(COLUMN_NAME_DATE,date);
+
+
+        DBHelper dbh=new DBHelper(getApplicationContext());
+        SQLiteDatabase db=dbh.getWritableDatabase();
+
+        //把数据放入数据库
+        db.insert(TABLE_NAME,null,values);
+
+        //页面跳转
+        Intent intent= new Intent(InsertActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+~~~
+
+### 查看数据
+Mainactivity
+1.先查询数据库所有的数据返回游标
+~~~
+ //查询notes表所有数据，返回游标
+    public Cursor query(){
+        DBHelper dbh=new DBHelper(getApplicationContext());
+        SQLiteDatabase db=dbh.getWritableDatabase();
+
+        Cursor cursor=db.query(TABLE_NAME,null,null,null,null,null,null);
+        cursor.moveToFirst();//游标移动到第一位
+        return cursor;
+    }
+~~~
+2.创建适配器，使用listview显示备忘录数据
+~~~
+        //创建Cursor适配器
+        
+        final Cursor cursor=query();
+        String[] from={COLUMN_NAME_ID,COLUMN_NAME_TITLE,COLUMN_NAME_DETAIL,COLUMN_NAME_DATE};
+        int[] to={R.id.List_id,R.id.List_title,R.id.List_detail,R.id.List_date};
+        apt=new SimpleCursorAdapter(this,R.layout.listview_note,cursor,from,to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
+        //创建listView
+        listView=findViewById(R.id.lv1);
+        listView.setAdapter(apt);
+
+~~~
+### 备忘录点击重新编辑功能
+1.设置listview监听事件，获取当前item数据，带数据跳转到编辑界面，
+~~~
+//listviewItem点击事件，进入编辑页面
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Cursor c=(Cursor)listView.getItemAtPosition(position);
+                String title=c.getString(c.getColumnIndex(COLUMN_NAME_TITLE));
+                String detail=c.getString(c.getColumnIndex(COLUMN_NAME_DETAIL));
+                int _id=c.getInt(c.getColumnIndex(COLUMN_NAME_ID));
+                String lastdate=c.getString(c.getColumnIndex(COLUMN_NAME_DATE));
+                Intent intent=new Intent();
+                intent.putExtra(COLUMN_NAME_TITLE,title);
+                intent.putExtra(COLUMN_NAME_DETAIL,detail);
+                intent.putExtra(COLUMN_NAME_ID,_id);
+                intent.putExtra(COLUMN_NAME_DATE,lastdate);
+                intent.setClass(MainActivity.this,updateActivity.class);
+                startActivity(intent);
+            }
+        });
+
+~~~
+2.获取点击的item的数据填充到编辑页面的Edtext里，在重新编辑之后更新数据库。
+~~~
+
+    //通过intent从listview获取数据
+        Intent intent=this.getIntent();
+        Bundle bundle=intent.getExtras();
+        String title=bundle.getString("title");
+        String detail=bundle.getString("detail");
+        int  _id=bundle.getInt("_id");
+        final String ids=Integer.toString(_id);
+
+
+        final EditText TITLE =(EditText) findViewById (R.id.update_title);
+        final EditText DETAIL =(EditText) findViewById (R.id.update_detail);
+
+        //设置editText内容
+        TITLE.setText(title);
+        DETAIL.setText(detail);
+
+
+        //按钮点击事件 修改笔记
+        Button update=(Button)findViewById(R.id.update_b1);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //获取当前时间
+                SimpleDateFormat formatter   =   new   SimpleDateFormat   ("yyyy.MM.dd.HH:mm:ss");//获取时间
+                Date curDate =  new Date(System.currentTimeMillis());
+                String lastdate=formatter.format(curDate);
+
+                //数据库连接
+                DBHelper dbh=new DBHelper(getApplicationContext());
+                SQLiteDatabase db=dbh.getWritableDatabase();
+
+
+                //获取Edittext内容
+                String Atitle=TITLE.getText().toString();
+                String Adetail=DETAIL.getText().toString();
+
+                //存储键值对
+                ContentValues values=new ContentValues();
+                values.put(COLUMN_NAME_TITLE,Atitle);
+                values.put(COLUMN_NAME_DETAIL,Adetail);
+                values.put(COLUMN_NAME_DATE,lastdate);
+                String[] id={String.valueOf(ids)};
+
+                //updates数据库
+                db.update(TABLE_NAME,values,"_id=?",id);
+
+                //页面跳转
+                Intent intent= new Intent(updateActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+~~~
+###
