@@ -14,8 +14,11 @@
 4.备忘录更换主题功能。
 
 5.界面美化。
+## 二.实现效果：
+<image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E4%B8%BB%E7%95%8C%E9%9D%A2.png">
 
-## 二 主要目录说明： 注：因为太晚开始编写这个项目，没有想好就开始写了，所以写的有点混乱。敬请谅解。
+
+## 三.主要目录说明： 注：因为太晚开始编写这个项目，没有想好就开始写了，所以写的有点混乱。敬请谅解。
 ### FeedReaderContract
 定义架构和契约： 定义表的创建和删除语句。定义表的字段。
 ### DBHelper
@@ -35,7 +38,7 @@
 ### initData
 数据类，用来存放偏好设置的数据
 
-## 三. 实现功能的详细说明
+## 四. 实现功能的详细说明
 
 ### 数据库的创建
   
@@ -467,5 +470,6 @@ styles.xml
         <item name="android:windowBackground">@drawable/pink</item>
     </style>
 ~~~
+
 
 
