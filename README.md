@@ -15,11 +15,27 @@
 
 5.界面美化。
 ## 二.实现效果：
-主界面                                                                 插入界面
+主界面   插入界面  编辑界面
 
 
-<image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E4%B8%BB%E7%95%8C%E9%9D%A2.png">      <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E6%8F%92%E5%85%A5%E7%95%8C%E9%9D%A2.png">
+<image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E4%B8%BB%E7%95%8C%E9%9D%A2.png"> <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E6%8F%92%E5%85%A5%E7%95%8C%E9%9D%A2.png">  <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2.png">
+  
+查询界面   长按删除  
 
+ <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E6%9F%A5%E8%AF%A2%E7%95%8C%E9%9D%A2.png"><image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E9%95%BF%E6%8C%89%E5%88%A0%E9%99%A4.png">
+  
+  设置界面
+  
+  <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2.png"><image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98.png">
+  
+  粉色主题
+
+  <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E7%B2%891.png"><image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E7%B2%892.png">
+  
+  蓝色主题
+  
+  <image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E8%93%9D1.png"><image width='250dp' hight='450dp' src="https://github.com/lianxinZ/Notepad1.0/blob/master/app/screenshot/%E8%93%9D2.png">
+  
 
 ## 三.主要目录说明： 注：因为太晚开始编写这个项目，没有想好就开始写了，所以写的有点混乱。敬请谅解。
 ### FeedReaderContract
